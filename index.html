@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private, local counterparty argument response trainer.">
+  <title>Agon's Virtual Hub</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Agon's Virtual Hub home">
+        <span class="brand-mark">A</span>
+        <span>Agon's Virtual Hub</span>
+      </a>
+      <span class="privacy-note">Local session only</span>
+    </header>
+
+    <section id="welcome-screen" class="screen welcome-screen" aria-labelledby="welcome-title">
+      <div class="eyebrow">Hearing simulator</div>
+      <h1 id="welcome-title">Train your response before the argument arrives.</h1>
+      <p class="intro">Load the arguments you expect to hear, then practice structuring a response under time pressure. Your entries stay in this browser tab and disappear when the session ends.</p>
+
+      <div class="feature-grid" aria-label="How the simulator works">
+        <article class="feature-item">
+          <span class="feature-number">01</span>
+          <h2>Anticipate</h2>
+          <p>Prepare up to seven counterparty arguments.</p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-number">02</span>
+          <h2>Respond</h2>
+          <p>Face them in a fresh, randomized order.</p>
+        </article>
+        <article class="feature-item">
+          <span class="feature-number">03</span>
+          <h2>Reflect</h2>
+          <p>Review your average reaction speed.</p>
+        </article>
+      </div>
+
+      <div class="disclaimer-panel">
+        <div>
+          <strong>Educational practice tool</strong>
+          <p>This simulator does not provide legal advice, assess the quality of your response, or replace a qualified lawyer.</p>
+        </div>
+        <label class="consent-control">
+          <input id="consent-checkbox" type="checkbox">
+          <span>I understand and want to begin.</span>
+        </label>
+      </div>
+      <button id="begin-button" class="button button-primary" type="button" disabled>Begin setup <span aria-hidden="true">&rarr;</span></button>
+    </section>
+
+    <section id="setup-screen" class="screen" hidden aria-labelledby="setup-title">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Step 1 of 2</div>
+          <h1 id="setup-title">What might they say?</h1>
+          <p>Enter the arguments you want to rehearse. At least two are needed for a useful randomized round.</p>
+        </div>
+        <span id="argument-count" class="count-badge">0 / 7</span>
+      </div>
+
+      <form id="argument-form">
+        <div id="argument-list" class="argument-list"></div>
+        <div class="form-actions">
+          <button id="add-argument-button" class="button button-secondary" type="button"><span aria-hidden="true">+</span> Add argument</button>
+          <button id="start-simulation-button" class="button button-primary" type="submit" disabled>Start simulation <span aria-hidden="true">&rarr;</span></button>
+        </div>
+        <p id="setup-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="simulation-screen" class="screen" hidden aria-labelledby="simulation-title">
+      <div class="simulation-topline">
+        <div>
+          <div class="eyebrow">Step 2 of 2</div>
+          <p id="round-label" class="round-label">Round 1 of 1</p>
+        </div>
+        <button id="quit-button" class="text-button" type="button">End session</button>
+      </div>
+      <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+
+      <div class="simulation-grid">
+        <div class="argument-panel">
+          <p class="panel-label">Counterparty argument</p>
+          <h1 id="simulation-title">Your argument appears here</h1>
+          <div class="timer-wrap">
+            <span class="timer-label">Response time</span>
+            <output id="timer" class="timer" aria-live="polite">00:00.0</output>
+          </div>
+          <button id="timer-button" class="button button-timer" type="button">Start timer</button>
+          <p id="timer-help" class="timer-help">Take a breath, structure your answer out loud, then stop the timer.</p>
+        </div>
+        <aside class="tip-panel">
+          <div class="tip-heading"><span class="tip-icon" aria-hidden="true">?</span><span>Rhetoric check</span></div>
+          <h2 id="tip-title">Look for the hidden move.</h2>
+          <p id="tip-text">A practical prompt will appear for each round.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="results-screen" class="screen results-screen" hidden aria-labelledby="results-title">
+      <div class="eyebrow">Session complete</div>
+      <h1 id="results-title">Your response rhythm</h1>
+      <p class="intro">The score reflects response speed only. It says nothing about the legal strength or quality of your argument.</p>
+      <div class="results-card">
+        <div class="rank-block">
+          <span class="panel-label">Current rank</span>
+          <strong id="rank-name">Student Lawyer</strong>
+          <span id="rank-description">You are building your response structure.</span>
+        </div>
+        <div class="score-block">
+          <span class="panel-label">Average response</span>
+          <strong id="average-time">00:00.0</strong>
+          <span id="round-total">Across 0 rounds</span>
+        </div>
+      </div>
+      <div class="results-actions">
+        <button id="restart-button" class="button button-primary" type="button">Practice again <span aria-hidden="true">&rarr;</span></button>
+        <button id="home-button" class="button button-secondary" type="button">Return home</button>
+      </div>
+    </section>
+
+    <footer class="site-footer">Agon's Virtual Hub <span aria-hidden="true">&middot;</span> Built for focused practice</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
